@@ -392,4 +392,5 @@ export type SQLFunctionOnly =
   ReturnType<typeof createSqlFunction> extends (...args: infer T) => infer U ?
     (...args: T) => U
   : never
+
 export type SQLFunction = ReturnType<typeof createSqlFunction>
