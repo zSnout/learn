@@ -4,6 +4,8 @@ import JSZip from "jszip"
 export const MEDIA_PREFIX = "/media/"
 export type MediaPrefix = typeof MEDIA_PREFIX
 
+export const MEDIA_REGEX = /\/media\/([0-9a-fA-F]{16})/g
+
 export interface UserMediaTypes extends DBSchema {
   media: {
     key: ArrayBuffer

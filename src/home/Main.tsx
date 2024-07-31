@@ -106,15 +106,6 @@ export function Main() {
 
   const worker = new Worker()
 
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register(
-      import.meta.env.MODE === "production" ?
-        "/service-worker.js"
-      : "/dev-sw.js?dev-sw",
-      { type: "module" },
-    )
-  }
-
   return (
     <ErrorHandler>
       <Toasts.Root>

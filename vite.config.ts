@@ -11,7 +11,6 @@ export default defineConfig({
       srcDir: "src",
       filename: "sw.ts",
       strategies: "injectManifest",
-      injectRegister: false,
       manifest: false,
       injectManifest: { injectionPoint: undefined },
       devOptions: {

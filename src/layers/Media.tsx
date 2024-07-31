@@ -26,7 +26,7 @@ import { download } from "@/lib/download"
 import { createExpr } from "@/lib/expr"
 import { filename } from "@/lib/filename"
 import { displayFileSize } from "@/lib/fileSize"
-import { parseKey, UserMedia, writeKey } from "@/lib/media"
+import { MEDIA_PREFIX, parseKey, UserMedia, writeKey } from "@/lib/media"
 import {
   faArrowUpRightFromSquare,
   faDownload,
@@ -245,7 +245,7 @@ export default defineLayer({
           </Td>
           <Td selected={props.selected}>
             <div class="inline-flex items-center gap-1">
-              <a href={"/learn/media/" + writeKey(props.key)} target="_new">
+              <a href={MEDIA_PREFIX + writeKey(props.key)} target="_new">
                 <Fa
                   class="icon-z-text-link h-3 w-3"
                   icon={faArrowUpRightFromSquare}

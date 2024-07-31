@@ -1,5 +1,5 @@
 import type { Id } from "@/lib/id"
-import { parseKey, UserMedia, writeKey } from "@/lib/media"
+import { MEDIA_REGEX, parseKey, UserMedia, writeKey } from "@/lib/media"
 import { unique } from "@/lib/unique"
 import JSZip from "jszip"
 import { readonly, sql } from ".."
@@ -15,8 +15,6 @@ export interface ExportDecksProps {
 }
 
 const userMedia = new UserMedia()
-
-const MEDIA_REGEX = /\/learn\/media\/([0-9a-zA-Z]{16})/g
 
 export async function export_decks_txless(
   dids: Id[],

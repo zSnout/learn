@@ -1,4 +1,4 @@
-import { UserMedia, writeKey } from "@/lib/media"
+import { MEDIA_PREFIX, UserMedia, writeKey } from "@/lib/media"
 import { readonly, sql } from ".."
 import { text } from "../lib/checks"
 
@@ -20,7 +20,7 @@ export async function media_analyze_unused() {
 
     const unusedKeys: ArrayBuffer[] = []
     for (const key of keys) {
-      const str = `/learn/media/${writeKey(key)}`
+      const str = `${MEDIA_PREFIX}${writeKey(key)}`
       if (!texts.some((x) => x.includes(str))) {
         unusedKeys.push(key)
       }
