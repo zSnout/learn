@@ -43,9 +43,11 @@ function Index() {
         </div>
       </header>
 
-      <div class="text-z mx-6 flex flex-1 flex-col pb-8 pt-20 transition print:mx-0 print:my-0">
-        <div class="text-z mx-auto flex w-[64rem] max-w-full flex-1 flex-col transition">
-          <Main />
+      <div class="pb-[env(safe-area-inset-bottom)]">
+        <div class="text-z mx-6 flex flex-1 flex-col pb-8 pt-20 transition print:mx-0 print:my-0">
+          <div class="text-z mx-auto flex w-[64rem] max-w-full flex-1 flex-col transition">
+            <Main />
+          </div>
         </div>
       </div>
     </>
