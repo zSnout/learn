@@ -1,11 +1,10 @@
 /* @refresh reload */
 import { render } from "solid-js/web"
 
-import "./register-sw"
-
 import { Fa } from "@/el/Fa"
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons"
 import { Main } from "./Main"
+import { register } from "./register-sw"
 import { ThemeSwitcher } from "./ThemeSwitcher"
 
 const root = document.getElementById("root")
@@ -13,6 +12,8 @@ const root = document.getElementById("root")
 render(() => <Index />, root!)
 
 function Index() {
+  register(getOwner())
+
   return (
     <>
       <div class="bg-z-body pointer-events-none fixed -top-20 left-0 z-30 h-20 w-full print:hidden"></div>
@@ -52,7 +53,7 @@ function Index() {
 }
 
 import { isDark } from "@/lib/theme"
-import { createEffect } from "solid-js"
+import { createEffect, getOwner } from "solid-js"
 
 if (typeof document != "undefined") {
   const list = document.documentElement.classList
