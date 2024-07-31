@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS rev_log (
+  id INTEGER PRIMARY KEY NOT NULL,
+  cid INTEGER NOT NULL,
+  time INTEGER NOT NULL,
+  type INTEGER NOT NULL,
+  rating INTEGER NOT NULL,
+  state INTEGER NOT NULL,
+  due INTEGER NOT NULL,
+  stability REAL NOT NULL,
+  difficulty REAL NOT NULL,
+  elapsed_days INTEGER NOT NULL,
+  last_elapsed_days INTEGER NOT NULL,
+  scheduled_days INTEGER NOT NULL,
+  review INTEGER NOT NULL
+);
