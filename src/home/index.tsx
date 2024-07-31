@@ -2,7 +2,9 @@
 import { render } from "solid-js/web"
 
 import { Fa } from "@/el/Fa"
+import { isDark } from "@/lib/theme"
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons"
+import { createEffect, getOwner } from "solid-js"
 import { Main } from "./Main"
 import { register } from "./register-sw"
 import { ThemeSwitcher } from "./ThemeSwitcher"
@@ -53,9 +55,6 @@ function Index() {
     </>
   )
 }
-
-import { isDark } from "@/lib/theme"
-import { createEffect, getOwner } from "solid-js"
 
 if (typeof document != "undefined") {
   const list = document.documentElement.classList
