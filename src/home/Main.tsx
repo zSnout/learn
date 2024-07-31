@@ -6,10 +6,10 @@ import type { Reason } from "@/lib/reason"
 import { error, type Result } from "@/lib/result"
 import { ShortcutManager } from "@/lib/shortcuts"
 import { createSignal, JSX, onMount, Show, untrack } from "solid-js"
-import { Worker } from "./db"
+import { Worker } from "../db"
+import { ZID_BEFORE_UNDO, type UndoType } from "../shared"
+import type { UndoMeta } from "../worker/lib/undo"
 import { ROOT_LAYER_HOME } from "./Home"
-import { ZID_BEFORE_UNDO, type UndoType } from "./shared"
-import type { UndoMeta } from "./worker/lib/undo"
 
 function ErrorHandler(props: { children: JSX.Element }) {
   const [reason, setError] = createSignal<unknown>()

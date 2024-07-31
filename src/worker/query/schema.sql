@@ -293,7 +293,8 @@ BEFORE UPDATE ON confs
 BEGIN
   SELECT
     CASE
-      WHEN old.id = 0 THEN RAISE(
+      WHEN old.id = 0
+      AND new.id != 0 THEN RAISE(
         ABORT,
         'Cannot change the ID of the default deck configuration.'
       )
@@ -317,7 +318,8 @@ BEFORE UPDATE ON core
 BEGIN
   SELECT
     CASE
-      WHEN old.id = 0 THEN RAISE(
+      WHEN old.id = 0
+      AND new.id != 0 THEN RAISE(
         ABORT,
         'Cannot change the ID of the collection core.'
       )
@@ -338,7 +340,8 @@ BEFORE UPDATE ON prefs
 BEGIN
   SELECT
     CASE
-      WHEN old.id = 0 THEN RAISE(
+      WHEN old.id = 0
+      AND new.id != 0 THEN RAISE(
         ABORT,
         'Cannot change the ID of the collection''s global preferences.'
       )

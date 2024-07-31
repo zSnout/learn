@@ -1,13 +1,53 @@
 <!doctype html>
-<html lang="en">
+<html class="bg-z-body flex h-full w-full flex-col scroll-smooth" lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href="https://learn.zsnout.com/" />
+    <link rel="stylesheet" href="src/home/index.css" />
+    <meta name="generator" content="{Astro.generator}" />
+    <meta name="description" content="TODO:description" />
     <title>zSnout Learn</title>
+    <meta property="og:site_name" content="zSnout" />
+    <meta property="og:url" content="https://learn.zsnout.com/" />
+    <meta property="og:title" content="zSnout Learn" />
+    <meta property="og:image" content="TODO:imageSrc" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="TODO:description" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content="v8.zsnout.com" />
+    <meta property="twitter:url" content="https://learn.zsnout.com/" />
+    <meta name="twitter:title" content="zSnout Learn" />
+    <meta name="twitter:description" content="TODO:description" />
+    <meta name="twitter:image" content="TODO:imageSrc" />
   </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/index.tsx"></script>
+
+  <body
+    class="bg-z-body flex flex-1 flex-col scroll-smooth transition [.z-ctxmenu_&]:overflow-hidden"
+  >
+    <div id="root" class="contents" />
+    <script type="module" src="src/home/index.tsx"></script>
+
+    <script>
+      const isDeviceDark = matchMedia("(prefers-color-scheme: dark)").matches
+
+      const theme = window.localStorage?.getItem("z8:theme")
+
+      const isDark = isDeviceDark ? theme != "light" : theme == "dark"
+
+      const list = document.documentElement.classList
+
+      requestAnimationFrame(() => {
+        list.add("no-transition")
+        list.toggle("dark", isDark)
+
+        requestAnimationFrame(() => {
+          list.remove("no-transition")
+        })
+      })
+    </script>
   </body>
 </html>

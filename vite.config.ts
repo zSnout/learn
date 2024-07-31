@@ -1,4 +1,3 @@
-import nesting from "tailwindcss/nesting"
 import { defineConfig } from "vite"
 import { VitePWA } from "vite-plugin-pwa"
 import solid from "vite-plugin-solid"
@@ -33,4 +32,10 @@ export default defineConfig({
   },
   esbuild: { target: "es2022" },
   build: { target: "es2022" },
+  server: {
+    headers: {
+      "Cross-Origin-Opener-Policy": "same-origin",
+      "Cross-Origin-Embedder-Policy": "require-corp",
+    },
+  },
 })

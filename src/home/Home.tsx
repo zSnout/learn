@@ -29,7 +29,7 @@ import {
   faUpload,
 } from "@fortawesome/free-solid-svg-icons"
 import { createSignal, onMount } from "solid-js"
-import { Worker } from "./db"
+import { Worker } from "../db"
 import {
   LAYER_BROWSE,
   LAYER_CREATE_NOTE,
@@ -41,8 +41,8 @@ import {
   LAYER_STORAGE,
   LAYER_STUDY,
   LAYER_TASKS,
-} from "./layers"
-import type { ExportDecksProps } from "./worker/messages/export_decks"
+} from "../layers"
+import type { ExportDecksProps } from "../worker/messages/export_decks"
 
 function nope(): never {
   throw new Error("this page doesn't exist yet")
