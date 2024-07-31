@@ -59,13 +59,26 @@ import { createEffect, getOwner } from "solid-js"
 
 if (typeof document != "undefined") {
   const list = document.documentElement.classList
+  const theme = document.querySelector<HTMLMetaElement>(
+    "meta[name=theme-color]",
+  )
 
   if (import.meta.env.DEV) {
     const warn = console.warn
     console.warn = () => {}
-    createEffect(() => list.toggle("dark", isDark()))
+    createEffect(() => {
+      list.toggle("dark", isDark())
+      if (theme) {
+        theme.content = isDark() ? "#0f172a" : "#ffffff"
+      }
+    })
     console.warn = warn
   } else {
-    createEffect(() => list.toggle("dark", isDark()))
+    createEffect(() => {
+      list.toggle("dark", isDark())
+      if (theme) {
+        theme.content = isDark() ? "#0f172a" : "#ffffff"
+      }
+    })
   }
 }
