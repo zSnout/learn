@@ -13,6 +13,11 @@ export default defineConfig({
       filename: "sw.ts",
       devOptions: { enabled: true, type: "module" },
       registerType: "autoUpdate",
+      includeAssets: [
+        "/pwa-192x192.png",
+        "/pwa-512x512.png",
+        "/safari-pinned-tab.svg",
+      ],
       manifest: {
         name: "zSnout Learn",
         short_name: "zSnout Learn",
@@ -49,6 +54,9 @@ export default defineConfig({
         ],
         theme_color: "#ffffff",
         background_color: "#ffffff",
+        orientation: "natural",
+        edge_side_panel: { preferred_width: 375 },
+        id: "/",
         display: "standalone",
       },
     }),
