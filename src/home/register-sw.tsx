@@ -5,11 +5,15 @@ import { registerSW } from "virtual:pwa-register"
 let registered = false
 
 export function register(owner: Owner | null) {
+  if (registered) {
+    return
+  }
+
   registered = true
 
   const intervalMS = 60 * 60 * 1000
 
-  const updateSW = registerSW({
+  registerSW({
     onRegisteredSW(swUrl, r) {
       if (r) {
         setInterval(async () => {
