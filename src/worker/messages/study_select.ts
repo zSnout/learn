@@ -1,6 +1,6 @@
-import { notNull } from "@/lib/pray"
 import { startOfDaySync } from "@/lib/day"
 import type { Id } from "@/lib/id"
+import { notNull } from "@/lib/pray"
 import { __unsafeDoNotUseDangerouslySetInnerHtmlYetAnotherMockOfReactRepeatUnfiltered } from "@/lib/repeat"
 import type { Conf, Prefs } from "@/lib/types"
 import { FSRS } from "ts-fsrs"
@@ -46,13 +46,15 @@ function pickCid(
   const EXPECTED_REVIEWS_LEFT =
     new_left * conf.new.learning_steps.length + rev_left
 
+  const REVIEW_RATIO =
+    limits.rev.now == null ?
+      EXPECTED_REVIEWS_LEFT / (EXPECTED_REVIEWS_LEFT + rev_today)
+    : Math.max(0, Math.min(limits.rev.now - rev_today, EXPECTED_REVIEWS_LEFT)) /
+      (limits.rev.now ?? EXPECTED_REVIEWS_LEFT + rev_today)
+
   // TODO: what happens when .now is zero
   const PREFER_NEW =
-    (
-      Math.max(0, limits.new.now - new_today) / limits.new.now >=
-      Math.max(0, Math.min(limits.rev.now - rev_today, EXPECTED_REVIEWS_LEFT)) /
-        limits.rev.now
-    ) ?
+    Math.max(0, limits.new.now - new_today) / limits.new.now >= REVIEW_RATIO ?
       true
     : null
 

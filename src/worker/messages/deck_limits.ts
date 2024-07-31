@@ -29,7 +29,7 @@ export function deck_limits_txless(root: Id | null, dayStart: number): Limits {
 
   const [new_per_day, rev_per_day] = sql`
     SELECT new_per_day, review_per_day FROM confs WHERE id = ${cfid};
-  `.getRow([int, int])
+  `.getRow([int, qint])
 
   const isToday =
     (today != null && isSameDaySync(dayStart, Date.now(), today)) || null
@@ -56,16 +56,16 @@ export function deck_limits_txless(root: Id | null, dayStart: number): Limits {
   }
 }
 
-export interface Limit {
+export interface Limit<T extends null> {
   deckToday: number | null
   deckDefault: number | null
-  confStandard: number
-  now: number
+  confStandard: number | T
+  now: number | T
 }
 
 export interface Limits {
-  new: Limit
-  rev: Limit
+  new: Limit<never>
+  rev: Limit<null>
 }
 
 export function deck_limits(main: Id | null): Limits {
@@ -75,16 +75,4 @@ export function deck_limits(main: Id | null): Limits {
   } finally {
     tx.dispose()
   }
-}
-
-export interface Limit {
-  deckToday: number | null
-  deckDefault: number | null
-  confStandard: number
-  now: number
-}
-
-export interface Limits {
-  new: Limit
-  rev: Limit
 }

@@ -115,12 +115,12 @@ hr {
   )
 }
 
-export function createBuiltinV3(now: number) {
+export function createBuiltinV1(now: number) {
   return [createBasicModel(now), createBasicAndReversedModel(now)]
 }
 
 export function createBuiltin(now: number) {
-  return createBuiltinV3(now)
+  return createBuiltinV1(now)
 }
 
 export const BUILTIN_IDS = Object.freeze([

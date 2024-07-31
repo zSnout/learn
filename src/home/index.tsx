@@ -3,8 +3,8 @@ import { render } from "solid-js/web"
 
 import { Fa } from "@/el/Fa"
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons"
-import { useRegisterSW } from "virtual:pwa-register/solid"
 import { Main } from "./Main"
+import { register } from "./register-sw"
 import { ThemeSwitcher } from "./ThemeSwitcher"
 
 const root = document.getElementById("root")
@@ -12,7 +12,7 @@ const root = document.getElementById("root")
 render(() => <Index />, root!)
 
 function Index() {
-  useRegisterSW()
+  register(getOwner())
 
   return (
     <>
@@ -53,7 +53,7 @@ function Index() {
 }
 
 import { isDark } from "@/lib/theme"
-import { createEffect } from "solid-js"
+import { createEffect, getOwner } from "solid-js"
 
 if (typeof document != "undefined") {
   const list = document.documentElement.classList

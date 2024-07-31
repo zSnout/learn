@@ -18,8 +18,8 @@ import {
   type InferOutput,
 } from "valibot"
 import { sqlite3 } from ".."
+import { createStmts } from "./createStmts"
 import { createSqlFunction } from "./sql"
-import { createStmts } from "./stmts"
 
 export async function unpackage(file: File): Promise<PackagedDeck> {
   const files = await JSZip.loadAsync(file)

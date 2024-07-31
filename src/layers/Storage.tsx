@@ -61,4 +61,5 @@ const locationMap: Record<string, string> = {
   indexedDB: "User Media",
   fileSystem: "Database",
   serviceWorkerRegistrations: "Service Workers",
+  caches: "Offline Support",
 }
