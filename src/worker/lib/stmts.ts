@@ -14,7 +14,7 @@ import {
 } from "@/lib/types"
 import type { SqlValue } from "@sqlite.org/sqlite-wasm"
 import { sql } from ".."
-import type { SQLFunction } from "./sql"
+import type { SQLFunctionOnly } from "./sql"
 import { latest } from "./version"
 
 export type INTEGER = number
@@ -22,7 +22,7 @@ export type REAL = number
 export type BOOLEAN = number
 export type TEXT = string
 
-export function createStmts(sql: SQLFunction) {
+export function createStmts(sql: SQLFunctionOnly) {
   return {
     core: {
       insert() {
@@ -688,4 +688,6 @@ export function createStmts(sql: SQLFunction) {
   }
 }
 
-export const stmts = createStmts(sql)
+export const stmts = createStmts((strings, ...bindings) =>
+  sql(strings, ...bindings),
+)
