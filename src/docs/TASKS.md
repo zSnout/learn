@@ -40,6 +40,8 @@
 
 **Navigation**
 
+- [x] project has its own domain
+- [ ] project works entirely offline
 - [ ] url hash tracks layers and position
 
 **Data storage**
