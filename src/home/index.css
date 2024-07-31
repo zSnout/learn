@@ -6,39 +6,39 @@
   font-family: "nasin-nanpa";
   src:
     local("nasin-nanpa"),
-    url("./fonts/nasin-nanpa-2.7.1.otf") format("opentype");
+    url("/fonts/nasin-nanpa-2.7.1.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Fairfax HD";
   src:
     local("Fairfax HD"),
-    url("./fonts/FairfaxHD.eot") format("embedded-opentype"),
-    url("./fonts/FairfaxHD.ttf") format("truetype");
+    url("/fonts/FairfaxHD.eot") format("embedded-opentype"),
+    url("/fonts/FairfaxHD.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "sitelen seli kiwen juniko";
   src:
     local("sitelen seli kiwen juniko"),
-    url("./fonts/sitelenselikiwenjuniko.eot") format("embedded-opentype"),
-    url("./fonts/sitelenselikiwenjuniko.ttf") format("truetype");
+    url("/fonts/sitelenselikiwenjuniko.eot") format("embedded-opentype"),
+    url("/fonts/sitelenselikiwenjuniko.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "linja lipamanka";
   src:
     local("linja lipamanka"),
-    url("./fonts/linjalipamanka.otf") format("opentype"),
-    url("./fonts/linjalipamanka.woff") format("woff");
+    url("/fonts/linjalipamanka.otf") format("opentype"),
+    url("/fonts/linjalipamanka.woff") format("woff");
 }
 
 @font-face {
   font-family: "linja enki";
   src:
     local("linja enki"),
-    url("./fonts/linjaEnki.sfd") format("sfd"),
-    url("./fonts/linjaEnki.ttf") format("truetype");
+    url("/fonts/linjaEnki.sfd") format("sfd"),
+    url("/fonts/linjaEnki.ttf") format("truetype");
 }
 
 :root {

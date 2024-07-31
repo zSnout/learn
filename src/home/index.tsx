@@ -1,9 +1,10 @@
 /* @refresh reload */
 import { render } from "solid-js/web"
 
+import "./register-sw"
+
 import { Fa } from "@/el/Fa"
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons"
-import { useRegisterSW } from "virtual:pwa-register/solid"
 import { Main } from "./Main"
 import { ThemeSwitcher } from "./ThemeSwitcher"
 
@@ -12,8 +13,6 @@ const root = document.getElementById("root")
 render(() => <Index />, root!)
 
 function Index() {
-  useRegisterSW()
-
   return (
     <>
       <div class="bg-z-body pointer-events-none fixed -top-20 left-0 z-30 h-20 w-full print:hidden"></div>

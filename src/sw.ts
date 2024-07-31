@@ -1,7 +1,7 @@
+import { clientsClaim } from "workbox-core"
+import { cleanupOutdatedCaches, precacheAndRoute } from "workbox-precaching"
 import type { Awaitable } from "./el/Layers"
 import { MEDIA_PREFIX, parseKey, UserMedia } from "./lib/media"
-
-let media: UserMedia | undefined
 
 self.addEventListener(
   "fetch" as any,
@@ -17,3 +17,21 @@ self.addEventListener(
     }
   },
 )
+
+cleanupOutdatedCaches()
+
+precacheAndRoute(self.__WB_MANIFEST)
+
+self.skipWaiting()
+clientsClaim()
+
+let media: UserMedia | undefined
+
+declare global {
+  function skipWaiting(): void
+  var __WB_MANIFEST: any
+}
+
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") self.skipWaiting()
+})
