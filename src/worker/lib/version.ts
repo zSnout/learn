@@ -1,7 +1,7 @@
 import { createBuiltinV1 } from "@/lib/models"
 import type { WorkerDB } from ".."
 import { createSqlFunction } from "./sql"
-import { createStmts } from "./stmts"
+import { createStmts } from "./createStmts"
 
 export const latest = 1
 

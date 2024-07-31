@@ -7,7 +7,7 @@ import schema from "../query/schema_deckpkg.sql?raw"
 import schema_confs from "../query/schema_deckpkg_confs.sql?raw"
 import schema_rev_log from "../query/schema_deckpkg_rev_log.sql?raw"
 import { createSqlFunction, type Stmt } from "./sql"
-import { createStmts } from "./stmts"
+import { createStmts } from "./createStmts"
 
 function inner<T>(
   meta: { insert(): Stmt; insertArgs(item: T): SqlValue[] },
