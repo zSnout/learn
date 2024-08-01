@@ -234,7 +234,6 @@ export default defineLayer({
               <ResponseGray
                 onClick={() => {
                   setAnswerShown(true)
-                  alert("click noticed")
                 }}
               >
                 Reveal Answer

@@ -59,6 +59,11 @@
 - [ ] importable files can be dragged directly over the window
 - [x] deck sharing
 
+**Undo/redo**
+
+- [x] undo/redo works consistently
+- [ ] undo/redo is possible via device shake
+
 **Media**
 
 - [x] media files can be uploaded

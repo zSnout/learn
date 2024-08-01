@@ -159,7 +159,9 @@ export function ResponseGray(props: {
   return (
     <button
       class="hover:border-z hover:focus:border-z-focus hover:bg-z-body bg-z-body-selected z-field relative h-12 w-full rounded border-transparent px-0 py-1 shadow-none"
-      onClick={props.onClick}
+      onClick={() => {
+        props.onClick?.()
+      }}
       ontouchstart={() => {}}
       ontouchend={() => {}}
       ontouchcancel={() => {}}
