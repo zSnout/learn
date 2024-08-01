@@ -154,11 +154,12 @@ export function ResponsesSingleLink(props: {
 export function ResponseGray(props: {
   children: JSX.Element
   onClick?: () => void
+  onMouseDown?: () => void
 }) {
   return (
     <button
       class="bg-z-body-selected relative h-12 w-full rounded py-1"
-      onClick={() => props.onClick?.()}
+      onClick={props.onClick}
     >
       {props.children}
     </button>
