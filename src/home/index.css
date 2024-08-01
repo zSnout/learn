@@ -43,6 +43,7 @@
 
 :root {
   @apply font-sans;
+  touch-action: pan-x pan-y;
   --font-sp: "linja lipamanka", "nasin-nanpa", "sitelen seli kiwen juniko";
 }
 
