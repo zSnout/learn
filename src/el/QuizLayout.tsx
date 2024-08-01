@@ -160,6 +160,10 @@ export function ResponseGray(props: {
     <button
       class="bg-z-body-selected relative h-12 w-full rounded py-1"
       onClick={props.onClick}
+      ontouchstart={() => {}}
+      ontouchend={() => {}}
+      ontouchcancel={() => {}}
+      ontouchmove={() => {}}
     >
       {props.children}
     </button>

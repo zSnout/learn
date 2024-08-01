@@ -4,6 +4,7 @@ import { Checkbox } from "@/el/CheckboxGroup"
 import { ContextMenuItem } from "@/el/ContextMenu"
 import { defineLayer } from "@/el/DefineLayer"
 import { alert, confirm, ModalDescription, ModalStrong } from "@/el/Modal"
+import { Table, Td, Th, Tr } from "@/el/Table"
 import { UploadButton } from "@/el/upload"
 import { download } from "@/lib/download"
 import { createPrefsStore } from "@/lib/prefs"
@@ -12,6 +13,7 @@ import {
   faRightFromBracket,
   faUpload,
 } from "@fortawesome/free-solid-svg-icons"
+import { Show } from "solid-js"
 import type { Worker } from "../db"
 
 export default defineLayer({
@@ -157,6 +159,33 @@ export default defineLayer({
             <p>Enable debug features</p>
           </label>
         </CheckboxContainer>
+
+        <Show when={prefs.debug}>
+          <Table class="border-z flex-none rounded-lg border">
+            <thead>
+              <tr>
+                <Th>Entry</Th>
+                <Th>Value</Th>
+              </tr>
+            </thead>
+            <tbody>
+              <Tr>
+                <Td>Last commit hash</Td>
+                <Td>
+                  {import.meta.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 8) ??
+                    "<not available>"}
+                </Td>
+              </Tr>
+              <Tr>
+                <Td>Last commit message</Td>
+                <Td>
+                  {import.meta.env.VERCEL_GIT_COMMIT_MESSAGE ??
+                    "<not available>"}
+                </Td>
+              </Tr>
+            </tbody>
+          </Table>
+        </Show>
       </div>
     )
   },
