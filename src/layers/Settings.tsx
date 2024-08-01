@@ -172,14 +172,14 @@ export default defineLayer({
               <Tr>
                 <Td>Last commit hash</Td>
                 <Td>
-                  {import.meta.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 8) ??
+                  {import.meta.env.VITE_VERCEL_GIT_COMMIT_SHA?.slice(0, 8) ??
                     "<not available>"}
                 </Td>
               </Tr>
               <Tr>
                 <Td>Last commit message</Td>
                 <Td>
-                  {import.meta.env.VERCEL_GIT_COMMIT_MESSAGE ??
+                  {import.meta.env.VITE_VERCEL_GIT_COMMIT_MESSAGE ??
                     "<not available>"}
                 </Td>
               </Tr>
