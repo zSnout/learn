@@ -39,7 +39,7 @@ export function register(owner: Owner | null) {
       runWithOwner(owner, () => (
         <Show when={open()}>
           <Portal>
-            <div class="border-z bg-z-body text-z fixed bottom-2 right-2 flex w-96 max-w-[calc(100vw_-_1rem)] gap-1 rounded-lg border py-2 pl-3 pr-2 shadow-lg">
+            <div class="border-z bg-z-body text-z fixed bottom-2 right-2 flex w-96 max-w-[calc(100dvw_-_1rem)] gap-1 rounded-lg border py-2 pl-3 pr-2 shadow-lg">
               <div class="flex flex-1 flex-col">
                 <p class="text-z-heading font-semibold">Offline ready</p>
                 <p class="text-z-subtitle text-sm">

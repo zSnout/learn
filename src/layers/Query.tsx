@@ -65,7 +65,7 @@ export default defineLayer({
     const [safe, setSafe] = createSignal(true)
 
     return (
-      <div class="flex min-h-[calc(100vh_-_7rem)] w-full flex-1 flex-col gap-4">
+      <div class="flex min-h-[calc(100dvh_-_7rem)] w-full flex-1 flex-col gap-4">
         <Field />
         <Notes />
         <Data />
@@ -182,10 +182,10 @@ export default defineLayer({
           {(result) => (
             <div class="flex-1">
               <Unmain>
-                <div class="flex w-screen flex-col gap-4">
+                <div class="flex w-dvw flex-col gap-4">
                   <For each={result()}>
                     {(result) => (
-                      <div class="mx-auto min-w-[min(67rem,100vw)] max-w-[100vw] overflow-x-auto px-6">
+                      <div class="mx-auto min-w-[min(67rem,100dvw)] max-w-[100dvw] overflow-x-auto px-6">
                         <table class="border-z w-full border text-sm">
                           <thead>
                             <tr>

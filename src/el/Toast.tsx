@@ -24,7 +24,7 @@ export class Toasts {
     return (
       <ToastContext.Provider value={toasts}>
         <Portal>
-          <div class="pointer-events-none fixed bottom-0 left-0 right-0 max-h-screen">
+          <div class="pointer-events-none fixed bottom-0 left-0 right-0 max-h-dvh">
             <div class="mx-2 my-2 flex flex-col">
               <For each={toasts.toasts()}>{(el) => el}</For>
             </div>

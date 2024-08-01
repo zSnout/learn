@@ -49,7 +49,7 @@ export default defineLayer({
     let tbody!: TbodyRef
 
     return (
-      <div class="flex h-[calc(100vh_-_7rem)] w-full flex-1 flex-col">
+      <div class="flex h-[calc(100dvh_-_7rem)] w-full flex-1 flex-col">
         <TopActions />
         <Grid />
       </div>

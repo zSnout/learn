@@ -48,8 +48,8 @@ export default defineLayer({
 
     return (
       <div class="-my-8">
-        <Unmain class="flex h-[calc(100vh_-_3rem)]">
-          <div class="flex h-[calc(100vh_-_3rem)] w-full">
+        <Unmain class="flex h-[calc(100dvh_-_3rem)]">
+          <div class="flex h-[calc(100dvh_-_3rem)] w-full">
             <Sidebar />
             <Table onCtx={({ detail }) => detail(GridContextMenu)}>
               <Thead />
