@@ -244,28 +244,28 @@ export default defineLayer({
           >
             <ResponsesGrid class="grid-cols-4">
               <Button
-                class="bg-red-300 text-red-900 hover:bg-red-400 dark:bg-red-800 dark:text-red-100 dark:hover:bg-red-700"
+                class="bg-red-300 text-red-900 dark:bg-red-800 dark:text-red-100"
                 rating={Rating.Again}
                 label="Again"
                 shortcut={{ key: "1" }}
               />
 
               <Button
-                class="bg-[#ffcc91] text-yellow-900 hover:bg-yellow-400 dark:bg-yellow-800 dark:text-yellow-100 dark:hover:bg-yellow-700"
+                class="bg-[#ffcc91] text-yellow-900 dark:bg-yellow-800 dark:text-yellow-100"
                 rating={Rating.Hard}
                 label="Hard"
                 shortcut={{ key: "2" }}
               />
 
               <Button
-                class="bg-green-300 text-green-900 hover:bg-green-400 dark:bg-green-800 dark:text-green-100 dark:hover:bg-green-700"
+                class="bg-green-300 text-green-900 dark:bg-green-800 dark:text-green-100"
                 rating={Rating.Good}
                 label="Good"
                 shortcut={{ key: "3" }}
               />
 
               <Button
-                class="bg-blue-300 text-blue-900 hover:bg-blue-400 dark:bg-blue-800 dark:text-blue-100 dark:hover:bg-blue-700"
+                class="bg-blue-300 text-blue-900 dark:bg-blue-800 dark:text-blue-100"
                 rating={Rating.Easy}
                 label="Easy"
                 shortcut={{ key: "4" }}

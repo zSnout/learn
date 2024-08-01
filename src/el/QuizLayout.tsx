@@ -158,13 +158,12 @@ export function ResponseGray(props: {
 }) {
   return (
     <button
-      class="hover:border-z hover:focus-visible:border-z-focus hover:bg-z-body bg-z-body-selected z-field relative h-12 w-full cursor-pointer appearance-auto rounded border-transparent px-0 py-1 shadow-none"
-      on:click={() => {
-        props.onClick?.()
+      class="bg-z-body-selected z-field relative h-12 w-full cursor-pointer appearance-auto rounded border-transparent px-0 py-1 shadow-none"
+      ref={(el) => {
+        if (props.onClick) {
+          el.addEventListener("click", props.onClick)
+        }
       }}
-      // onClick={() => {
-      //   props.onClick?.()
-      // }}
       role="button"
     >
       {props.children}
@@ -183,8 +182,10 @@ export function Response(props: {
         "relative cursor-pointer appearance-auto rounded py-1 transition " +
         props.class
       }
-      on:click={() => {
-        props.onClick?.()
+      ref={(el) => {
+        if (props.onClick) {
+          el.addEventListener("click", props.onClick)
+        }
       }}
       role="button"
     >
