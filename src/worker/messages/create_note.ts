@@ -39,7 +39,9 @@ export function create_note(
   const fieldRecord = Template.fieldRecord(model.fields, fields)
   const cards: NewCard[] = []
 
-  let due = sql`SELECT max(due) FROM cards WHERE state = 0;`.getValue(int)
+  let due = sql`
+    SELECT coalesce(max(due), 0) FROM cards WHERE state = 0;
+  `.getValue(int)
 
   for (const tmpl of Object.values(model.tmpls)) {
     const base = createEmptyCard(now)
