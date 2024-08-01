@@ -231,7 +231,12 @@ export default defineLayer({
         >
           <Show
             fallback={
-              <ResponseGray onClick={() => setAnswerShown(true)}>
+              <ResponseGray
+                onClick={() => {
+                  setAnswerShown(true)
+                  alert("click noticed")
+                }}
+              >
                 Reveal Answer
                 <ShortcutLabel shortcuts={shortcuts} key={{ key: " " }} />
               </ResponseGray>
