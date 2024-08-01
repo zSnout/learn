@@ -158,11 +158,13 @@ export function ResponseGray(props: {
 }) {
   return (
     <button
-      class="z-field-focusable relative h-12 w-full cursor-pointer appearance-auto rounded border-transparent bg-z-body-selected px-0 py-1 shadow-none"
+      class="z-field-focusable relative h-12 w-full cursor-pointer rounded border-transparent bg-z-body-selected px-0 py-1 shadow-none"
       ref={(el) => {
         if (props.onClick) {
           el.addEventListener("click", props.onClick)
         }
+
+        el.onclick = () => {}
       }}
       role="button"
     >
@@ -179,13 +181,14 @@ export function Response(props: {
   return (
     <button
       class={
-        "z-field-focusable relative cursor-pointer appearance-auto rounded py-1 transition " +
-        props.class
+        "z-field-focusable relative cursor-pointer rounded py-1 " + props.class
       }
       ref={(el) => {
         if (props.onClick) {
           el.addEventListener("click", props.onClick)
         }
+
+        el.onclick = () => {}
       }}
       role="button"
     >
