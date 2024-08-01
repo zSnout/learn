@@ -54,6 +54,7 @@
 .light {
   @apply z-light-mq z-light-slate z-light-focus-blue;
   color-scheme: light;
+
   --z-bg-checkbox-selected: theme(colors.blue.400);
   --z-text-checkbox-selected: white;
   --z-bg-modal: var(--z-bg-body-partial);
