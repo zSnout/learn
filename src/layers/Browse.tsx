@@ -18,7 +18,7 @@ import {
 } from "@/el/TbodySelectable"
 import { download } from "@/lib/download"
 import { createExpr } from "@/lib/expr"
-import { idOf } from "@/lib/id"
+import { ID_ZERO, Id, idOf } from "@/lib/id"
 import { createPrefsStore } from "@/lib/prefs"
 import { Unmain } from "@/lib/Prose"
 import { BrowserColumn } from "@/lib/types"
@@ -73,7 +73,7 @@ export default defineLayer({
 
     function Sidebar() {
       return (
-        <div class="border-z flex h-full w-56 flex-col gap-1 overflow-auto border-r p-2">
+        <div class="flex h-full w-56 flex-col gap-1 overflow-auto border-r border-z p-2">
           <For each={BrowserColumn.options}>
             {(name) => (
               <label class="flex w-full gap-2">
@@ -122,6 +122,9 @@ export default defineLayer({
           </ContextMenuItem>
           <ContextMenuItem onClick={exportSelected}>
             Export selected cards
+          </ContextMenuItem>
+          <ContextMenuItem onClick={moveSelected}>
+            Move selected cards
           </ContextMenuItem>
         </>
       )
@@ -210,6 +213,52 @@ export default defineLayer({
       }
       const file = await worker.post("export_cards", cids, format)
       download(file)
+    }
+
+    async function moveSelected() {
+      const cids = tbody.getSelected().map(idOf)
+      const decks = await worker.post("browse_get_deck_ids")
+      const did = await popup<Id | null>({
+        owner,
+        onCancel(close) {
+          close(null)
+        },
+        children(close) {
+          let did = decks
+            .slice(1)
+            .reduce((a, [b]) => (a < b ? a : b), decks[0]![0])
+
+          return (
+            <>
+              <ModalTitle>Move selected cards</ModalTitle>
+              <ModalDescription>
+                Where do you want to move the cards?
+              </ModalDescription>
+              <ModalSelect
+                autofocus
+                value={"" + did}
+                onInput={(x) => (did = +x.currentTarget.value as Id)}
+              >
+                <For each={decks}>
+                  {([id, name]) => <option value={id}>{name}</option>}
+                </For>
+              </ModalSelect>
+              <ModalButtons>
+                <ModalCancel onClick={() => close(null)}>Cancel</ModalCancel>
+                <ModalConfirm onClick={() => close(did)}>Move</ModalConfirm>
+              </ModalButtons>
+            </>
+          )
+        },
+      })
+      if (did == null) {
+        return
+      }
+      const deck = decks.find((x) => x[0] === did)
+      if (!deck) {
+        return
+      }
+      await worker.post("browse_move_cards", cids, did, deck[1])
     }
   },
 })
