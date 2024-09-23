@@ -18,7 +18,7 @@ import {
 } from "@/el/TbodySelectable"
 import { download } from "@/lib/download"
 import { createExpr } from "@/lib/expr"
-import { ID_ZERO, Id, idOf } from "@/lib/id"
+import { Id, idOf } from "@/lib/id"
 import { createPrefsStore } from "@/lib/prefs"
 import { Unmain } from "@/lib/Prose"
 import { BrowserColumn } from "@/lib/types"
@@ -108,7 +108,6 @@ export default defineLayer({
         </div>
       )
     }
-
     function GridContextMenu(): JSX.Element {
       return (
         <>
