@@ -15,6 +15,10 @@ declare module "solid-js" {
     interface CustomEventHandlersLowerCase<T> {
       onctx?: EventHandlerUnion<T, CtxEvent>
     }
+
+    interface CustomEvents {
+      click: MouseEvent
+    }
   }
 }
 

@@ -26,4 +26,5 @@ export type Reason =
   | `Create deck ${string}`
   | `Delete deck ${string}`
   | `Rename deck to ${string}`
+  | `Move cards to ${string}`
   | `${string} (user query)`

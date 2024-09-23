@@ -369,7 +369,7 @@ export function IntegratedField(props: IntegratedFieldProps) {
               <button
                 tabIndex={-1}
                 class="z-field focus-visible:bg-z-body -m-1 rounded border-transparent bg-transparent p-1 shadow-none"
-                onClick={() => {
+                on:click={() => {
                   props.onSticky?.(!props.sticky)
                 }}
               >

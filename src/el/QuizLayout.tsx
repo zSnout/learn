@@ -37,7 +37,7 @@ export function ContentGuide(props: {
 }) {
   return (
     <div class="flex w-full flex-1 flex-col items-center justify-center gap-4">
-      <h1 class="text-z-heading text-2xl font-semibold">{props.title}</h1>
+      <h1 class="text-2xl font-semibold text-z-heading">{props.title}</h1>
       <div class="flex w-full max-w-[30rem] flex-col gap-4">
         {props.children}
       </div>
@@ -105,9 +105,9 @@ export function ContentCard(props: {
   fullFront?: boolean
 }) {
   return (
-    <div class="@container flex w-full max-w-full flex-1 flex-col gap-4">
+    <div class="flex w-full max-w-full flex-1 flex-col gap-4 @container">
       <Show when={props.source !== false}>
-        <div class="text-z-subtitle font-mono text-sm/[1] lowercase">
+        <div class="font-mono text-sm/[1] lowercase text-z-subtitle">
           <For each={props.source}>
             {(item, index) => (
               <Show fallback={item} when={index() != 0}>
@@ -120,7 +120,7 @@ export function ContentCard(props: {
       </Show>
 
       <div
-        class="text-z-heading @sm:text-7xl @md:text-8xl @lg:text-9xl max-w-full flex-col hyphens-auto text-center text-6xl font-semibold"
+        class="max-w-full flex-col hyphens-auto text-center text-6xl font-semibold text-z-heading @sm:text-7xl @md:text-8xl @lg:text-9xl"
         classList={{ "flex-1": props.fullFront, flex: props.fullFront }}
       >
         {props.front}
@@ -129,7 +129,7 @@ export function ContentCard(props: {
       <Show when={props.back}>
         <hr class="border-z" />
 
-        <div class="@sm:text-4xl @md:text-5xl @lg:text-6xl max-w-full hyphens-auto text-center text-3xl">
+        <div class="max-w-full hyphens-auto text-center text-3xl @sm:text-4xl @md:text-5xl @lg:text-6xl">
           {props.back}
         </div>
       </Show>
@@ -143,7 +143,7 @@ export function ResponsesSingleLink(props: {
 }) {
   return (
     <a
-      class="bg-z-body-selected flex h-12 w-full items-center justify-center rounded py-2"
+      class="flex h-12 w-full items-center justify-center rounded bg-z-body-selected py-2"
       href={props.href}
     >
       {props.children}
@@ -158,12 +158,15 @@ export function ResponseGray(props: {
 }) {
   return (
     <button
-      class="hover:border-z hover:focus:border-z-focus hover:bg-z-body bg-z-body-selected z-field relative h-12 w-full rounded border-transparent px-0 py-1 shadow-none"
-      onClick={props.onClick}
-      ontouchstart={() => {}}
-      ontouchend={() => {}}
-      ontouchcancel={() => {}}
-      ontouchmove={() => {}}
+      class="z-field-focusable relative h-12 w-full cursor-pointer rounded border-transparent bg-z-body-selected px-0 py-1 shadow-none"
+      ref={(el) => {
+        if (props.onClick) {
+          el.addEventListener("click", props.onClick)
+        }
+
+        el.onclick = () => {}
+      }}
+      role="button"
     >
       {props.children}
     </button>
@@ -177,8 +180,17 @@ export function Response(props: {
 }) {
   return (
     <button
-      class={"relative rounded py-1 " + props.class}
-      onClick={() => props.onClick?.()}
+      class={
+        "z-field-focusable relative cursor-pointer rounded py-1 " + props.class
+      }
+      ref={(el) => {
+        if (props.onClick) {
+          el.addEventListener("click", props.onClick)
+        }
+
+        el.onclick = () => {}
+      }}
+      role="button"
     >
       {props.children}
     </button>
@@ -299,14 +311,14 @@ export function SidebarStickyLabelAction(props: {
       class="ml-2 inline-flex h-4 w-4 items-center justify-center rounded bg-red-500"
       onClick={() => props.onClick?.()}
     >
-      <Fa class="icon-white h-3 w-3" icon={props.icon} title={props.title} />
+      <Fa class="h-3 w-3 icon-white" icon={props.icon} title={props.title} />
     </button>
   )
 }
 
 export function SidebarStickyLabel(props: { children: JSX.Element }) {
   return (
-    <div class="bg-z-body absolute left-1/2 top-0 flex -translate-x-1/2 -translate-y-1/2 flex-row items-center whitespace-nowrap px-2 text-sm/[1]">
+    <div class="absolute left-1/2 top-0 flex -translate-x-1/2 -translate-y-1/2 flex-row items-center whitespace-nowrap bg-z-body px-2 text-sm/[1]">
       {props.children}
     </div>
   )
@@ -315,11 +327,11 @@ export function SidebarStickyLabel(props: { children: JSX.Element }) {
 export function SidebarSticky(props: { children: JSX.Element }) {
   return (
     <div class="sticky -bottom-8 -mb-8 max-h-[min(24rem,50%)] w-full text-sm">
-      <div class="to-z-bg-body h-4 w-full bg-gradient-to-b from-transparent" />
+      <div class="h-4 w-full bg-gradient-to-b from-transparent to-z-bg-body" />
 
-      <div class="bg-z-body h-2 w-full" />
+      <div class="h-2 w-full bg-z-body" />
 
-      <div class="border-z bg-z-body relative border-t pt-[0.546875rem] sm:pb-0">
+      <div class="relative border-t border-z bg-z-body pt-[0.546875rem] sm:pb-0">
         {props.children}
       </div>
     </div>
@@ -345,7 +357,7 @@ export function ShortcutLabel(props: {
 
   return (
     <kbd
-      class="xs:block absolute bottom-0 right-1 hidden text-sm"
+      class="absolute bottom-0 right-1 hidden text-sm xs:block"
       title={`Shortcut: key ${key()}`}
       ref={el!}
     >
@@ -459,9 +471,9 @@ export function Full(props: {
               "pb-8": !props.layer,
             }}
           >
-            <div class="to-z-bg-body h-4 w-full bg-gradient-to-b from-transparent" />
+            <div class="h-4 w-full bg-gradient-to-b from-transparent to-z-bg-body" />
 
-            <div class="bg-z-body -mb-8 w-full pb-8 text-center">
+            <div class="-mb-8 w-full bg-z-body pb-8 text-center">
               {props.responses}
             </div>
           </div>
@@ -533,7 +545,7 @@ export function Full(props: {
           inert={!sidebarOpen()}
         >
           <div
-            class="border-z fixed bottom-8 right-0 flex w-[19.5rem] flex-col overflow-y-auto border-l px-4 py-10 sm:translate-x-0"
+            class="fixed bottom-8 right-0 flex w-[19.5rem] flex-col overflow-y-auto border-l border-z px-4 py-10 sm:translate-x-0"
             classList={{
               "translate-x-0": sidebarOpen(),
               "translate-x-full": !sidebarOpen(),
@@ -544,7 +556,7 @@ export function Full(props: {
           />
 
           <div
-            class="bg-z-body xs:w-[19.5rem] xs:border-z fixed bottom-0 right-0 flex w-full flex-col items-start overflow-y-auto border-l border-transparent px-4 py-8 transition sm:top-0 sm:w-[19.5rem] sm:translate-x-0 sm:border-transparent sm:bg-transparent sm:transition-none"
+            class="fixed bottom-0 right-0 flex w-full flex-col items-start overflow-y-auto border-l border-transparent bg-z-body px-4 py-8 transition xs:w-[19.5rem] xs:border-z sm:top-0 sm:w-[19.5rem] sm:translate-x-0 sm:border-transparent sm:bg-transparent sm:transition-none"
             classList={{
               "translate-x-0": sidebarOpen(),
               "translate-x-full": !sidebarOpen(),

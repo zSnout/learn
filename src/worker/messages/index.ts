@@ -1,5 +1,7 @@
 export { browse_due_date_set } from "./browse_due_date_set"
+export { browse_get_deck_ids } from "./browse_get_deck_ids"
 export { browse_load } from "./browse_load"
+export { browse_move_cards } from "./browse_move_cards"
 export { chart_compute } from "./chart_compute"
 export { charts_add } from "./charts_add"
 export { charts_get } from "./charts_get"
