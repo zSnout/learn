@@ -258,6 +258,7 @@ export default defineLayer({
         return
       }
       await worker.post("browse_move_cards", cids, did, deck[1])
+      reloadSorted()
     }
   },
 })
